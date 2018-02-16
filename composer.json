@@ -20,7 +20,7 @@
         "cviebrock/eloquent-sluggable": "^4.1",
         "team-reflex/challonge-php": "1.0.3",
         "ipunkt/laravel-analytics": "^1.3",
-        "zarlach/laravel-twitch-api": "^1.5"
+        "decrypted/twitch-sdk": "2.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

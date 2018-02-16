@@ -51,7 +51,6 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class,
         Ipunkt\LaravelAnalytics\AnalyticsServiceProvider::class,
-        Zarlach\TwitchApi\Providers\TwitchApiServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -107,7 +106,6 @@ return [
         'Omnipay'   => Ignited\LaravelOmnipay\Facades\OmnipayFacade::class,
         'QrCode'    => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Analytics' => Ipunkt\LaravelAnalytics\AnalyticsFacade::class,
-        'TwitchApi' => Zarlach\TwitchApi\Facades\TwitchApiServiceFacade::class,
         'Settings'  => App\Libraries\Settings::class,
         'Helpers'   => App\Libraries\Helpers::class,
     ],

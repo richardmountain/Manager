@@ -15,6 +15,8 @@ use App\Http\Requests;
 
 use Illuminate\Http\Request;
 
+use \jofner\SDK\TwitchTV\TwitchSDK;
+
 class HomeController extends Controller
 {
 	/**
@@ -23,6 +25,15 @@ class HomeController extends Controller
 	 */
 	public function index()
 	{
+		$twitch_config = array(
+		    'client_id' => env('TWITCH_KEY'),
+		    'client_secret' => env('TWITCH_SECRET'),
+		    'redirect_uri' => env('TWITCH_REDIRECT_URI'),
+		);
+		$twitch = new TwitchSDK($twitch_config);
+		$channel = $twitch->channelGet('mily260');
+		//dd($channel);
+
 		$user = Auth::user();
 		if ($user && !empty($user->eventParticipants)) {
 			foreach ($user->eventParticipants as $participant) {
