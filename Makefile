@@ -61,7 +61,7 @@ folder-structure:
 		mkdir -p storage/app/public/images/main/
 	# fi
 	chmod 775 bootstrap/cache/
-	chmod 777 -R storage/
+	chmod 777 storage/
 
 # Create SSL Keypair for Development
 ssh-keygen:
@@ -86,14 +86,14 @@ npm-install:
 	docker run -it --rm --name js-maintainence \
 	-v $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/usr/src/app \
 	-w /usr/src/app \
-	node npm install && gulp --production
+	node:8 /bin/bash -ci "npm install && npm install --global gulp && gulp --production"
 
 # Install Dev JS Dependencies via NPM
 npm-install-dev:
 	docker run -it --rm --name js-maintainence-dev \
 	-v $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))):/usr/src/app \
 	-w /usr/src/app \
-	node npm install && gulp
+	node:8 /bin/bash -ci "npm install && npm install --global gulp && gulp"
 # Purge Containers
 purge-containers:
 	docker-compose -p lan_manager stop
@@ -135,3 +135,5 @@ purge-all: stop purge-containers purge-cache
 	docker rm lan_manager_app
 	docker rm lan_manager_database
 	docker volume rm lan_manager_db
+
+.ONESHELL:
