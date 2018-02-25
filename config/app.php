@@ -59,6 +59,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TwitchServiceProvider::class,
     ],
 
     /*
@@ -106,6 +107,8 @@ return [
         'Omnipay'   => Ignited\LaravelOmnipay\Facades\OmnipayFacade::class,
         'QrCode'    => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Analytics' => Ipunkt\LaravelAnalytics\AnalyticsFacade::class,
+        'Twitch'    => App\Libraries\Twitch\TwitchFacade::class,
+        // DEBUG - MAKE THESE FACADES/SERVICES
         'Settings'  => App\Libraries\Settings::class,
         'Helpers'   => App\Libraries\Helpers::class,
     ],

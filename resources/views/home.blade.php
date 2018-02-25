@@ -3,23 +3,25 @@
 @section ('content')
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-<div id="twitch-embed"></div>
+@foreach (Twitch::getLiveStreamChannelNames(true) as $stream)
+	<h4>{{ $stream->steamname }}</h4>
+	<div id="twitch-embed"></div>
 
-<script type="text/javascript">
-      new Twitch.Embed("twitch-embed", {
-        width: 854,
-        height: 480,
-        layout: 'video',
-        channel: "mily260"
-      });
-    </script>
+	<script type="text/javascript">
+	      new Twitch.Embed("twitch-embed", {
+	        width: 854,
+	        height: 480,
+	        layout: 'video',
+	        channel: "{{ $stream->channel_name }}"
+	      });
+	    </script>
+@endforeach
 
 <div class="hero">
 	
 	<div class="hero-information" style="height:30%">
 
 		<div class="container">
-		
 			@if ( count($events) >= 1)
 				@foreach ( $events as $event )
 					<div class="col-xs-12 col-sm-6 col-lg-4">
