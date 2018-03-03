@@ -1,8 +1,8 @@
-live: purge-containers
+live:
 	docker-compose up -d --build 
 
 # Debug
-interative: purge-containers
+interative:
 	docker-compose up --build
 
 # Stop all Containers

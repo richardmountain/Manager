@@ -1,28 +1,32 @@
 @extends ('layouts.default')
 
 @section ('content')
-<script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-@foreach (Twitch::getLiveStreamChannelNames(true) as $stream)
-	<h4>{{ $stream->steamname }}</h4>
-	<div id="twitch-embed"></div>
-
-	<script type="text/javascript">
-	      new Twitch.Embed("twitch-embed", {
-	        width: 854,
-	        height: 480,
-	        layout: 'video',
-	        channel: "{{ $stream->channel_name }}"
-	      });
+<div class="container">
+	<script src="https://embed.twitch.tv/embed/v1.js"></script>
+	@foreach (Twitch::getLiveStreamChannelNames(true) as $stream)
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h4>{{ $stream->steamname }}</h4>
+				<div id="twitch-embed-{{ $stream->channel_name }}"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+	      	new Twitch.Embed("twitch-embed-{{ $stream->channel_name }}", {
+		        width: 854,
+		        height: 480,
+		        layout: 'video',
+		        channel: "{{ $stream->channel_name }}"
+	      	});
 	    </script>
-@endforeach
+	@endforeach
+</div>
 
 <div class="hero">
 	
-	<div class="hero-information" style="height:30%">
-
-		<div class="container">
-			@if ( count($events) >= 1)
+	<div class="hero-information">
+		<div class="container" style="height:30%">
+			@if ( count($events) >= 1 )
 				@foreach ( $events as $event )
 					<div class="col-xs-12 col-sm-6 col-lg-4">
 						<div class="hero-information__pre-title">
